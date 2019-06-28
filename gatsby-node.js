@@ -5,18 +5,18 @@
  */
 
 // You can delete this file if you're not using it
-/*
+
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   if (stage === "build-html") {
     actions.setWebpackConfig({
       module: {
         rules: [
           {
-            test: /react-qr-reader/,
+            test: /webrtc-adapter-2/,
             use: loaders.null(),
           },
         ],
       },
     })
   }
-}*/
+}

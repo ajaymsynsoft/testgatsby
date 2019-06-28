@@ -39,29 +39,25 @@ class Test extends Component {
     console.error(err)
   }
 
-  onButtonClick = err => {
-    console.log("onButtonClick",err);
+  componentDidMount(){
     this.setState({
       showComponent: true,
     });
   }
 
-
   render() {
     return (
-      <Layout>   
-      <button  onClick={this.onButtonClick}>Button</button >
+      <Layout>         
        {this.state.showComponent ?
            <QrReader
-          delay={300}
-          onError={this.handleError}
-          onScan={this.handleScan}
-          onLoad={this.handleLoad}
-          style={{ width: '100%' }}
-          /> :
-           null
-        }     
-		  		 
+            delay={300}
+            onError={this.handleError}
+            onScan={this.handleScan}
+            onLoad={this.handleLoad}
+            style={{ width: '100%' }}
+            /> :
+             null
+          }     		  		 
           <p>{this.state.result}</p>	      
         </Layout>
       )

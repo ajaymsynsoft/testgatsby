@@ -1,7 +1,7 @@
 module.exports = {
     siteMetadata: {
-        title: `Gatsby qr code reader`,
-        description: `Scan qr code and play audio.`,
+        title: `qrcode gatsby pwa`,
+        description: `qrcode gatsby pwa`,
         author: `@gatsbyjs`,
     },
     plugins: [
@@ -31,8 +31,8 @@ module.exports = {
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
-                name: `QRReader`,
-                short_name: `QRReader`,
+                name: `qrcode gatsby`,
+                short_name: `qrcode gatsby`,
                 start_url: `/`,
                 background_color: `#f7f0eb`,
                 theme_color: `#a2466c`,

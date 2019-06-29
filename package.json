@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-qr-code-reader",
+  "name": "qrcode-gatsby-pwa",
   "private": true,
-  "description": "Scan qr code and play audio.",
+  "description": "qrcode gatsby pwa",
   "version": "0.1.0",
   "author": "Ajay Mishra <ajaymishra@synsoftglobal.com>",
   "dependencies": {

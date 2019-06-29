@@ -4,14 +4,23 @@ import React, {
 
 import Layout from "../components/layout"
 
-if (typeof window != 'undefined') {
-    var QrReader = require('react-qr-reader')
-}
+var QrReader ='';
 
 class Test extends Component {
   state = {
     result: 'No result',
-    showComponent: false
+    QrReader: false,
+  }
+
+   componentDidMount() {
+    console.log("componentDidMount");
+    try {
+      QrReader = require("react-qr-reader");       
+      this.setState({QrReader:true});   
+      console.log("QrReader",QrReader);  
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   handleScan = data => {
@@ -39,26 +48,19 @@ class Test extends Component {
     console.error(err)
   }
 
-  componentDidMount(){
-    this.setState({
-      showComponent: true,
-    });
-  }
 
   render() {
     return (
-      <Layout>         
-       {this.state.showComponent ?
-           <QrReader
-            delay={300}
-            onError={this.handleError}
-            onScan={this.handleScan}
-            onLoad={this.handleLoad}
-            style={{ width: '100%' }}
-            /> :
-             null
-          }     		  		 
-          <p>{this.state.result}</p>	      
+      <Layout>   
+        { this.state.QrReader &&    
+         <QrReader
+          delay={300}
+          onError={this.handleError}
+          onScan={this.handleScan}
+          onLoad={this.handleLoad}
+          style={{ width: '100%' }}
+          /> 		  		 
+        }
         </Layout>
       )
   }    

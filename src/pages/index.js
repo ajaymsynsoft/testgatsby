@@ -143,7 +143,7 @@ class Test extends Component {
 
 
     handleError = err => {
-        alert(JSON.stringify(err));
+        console.error(JSON.stringify(err));
         console.error(err)
     }
 

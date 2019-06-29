@@ -13,8 +13,8 @@ class Test extends Component {
     result: 'No result',
     QrReader: false,
     showQrReader: true,
-   showMP3Player: false,
-   url: null,
+    showMP3Player: false,
+    url: null,
     pip: false,
     playing: true,
     controls: true,
@@ -66,7 +66,7 @@ class Test extends Component {
   handleScan = url => {
   //  alert(JSON.stringify(data));
   console.log(url);
-    if (url) {
+    if (typeof url =='string') {
     url=url.toLowerCase();
     console.log(url);
    if(audioList.indexOf(url) > -1){
@@ -99,8 +99,7 @@ class Test extends Component {
   handleLoad = url => {
     console.log(url);
    // alert(JSON.stringify(data));
-    if (url) {
-    
+    if (typeof url =='string') {    
     url=url.toLowerCase();
     console.log("url",audioList.indexOf(url));
     console.log(url);

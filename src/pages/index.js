@@ -170,7 +170,7 @@ class Test extends Component {
           <ReactPlayer 
             width='100%'
             height='100%'
-            autoPlay
+            autoplay
             ref={this.ref}
             url={url}     
             onEnded={this.handleAfterEnd}           
@@ -184,6 +184,7 @@ class Test extends Component {
           />    
           <div className="audioButton"> 
            <button className="button" onClick={this.handleAfterEnd}>Back</button>
+            <button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</button>
             <button className="button" onClick={this.handleAfterEnd}>Stop</button>
             <button className="button" onClick={this.handleRestart}>Re-start</button>
             </div>

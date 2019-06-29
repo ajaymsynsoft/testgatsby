@@ -180,6 +180,7 @@ class Test extends Component {
             onPlay={this.onPlay}             
             onPause={this.onPause}
             onProgress={this.onProgress}
+            onError={e => alert('onError')}
                 
           />    
           <div className="audioButton"> 

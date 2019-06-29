@@ -140,6 +140,16 @@ class Test extends Component {
         this.player.seekTo(parseFloat(e.target.value))
     }
 
+    onPause = () => {
+        console.log('onPause')
+        this.setState({ playing: false })
+    }
+
+    onPlay = () => {
+        console.log('onPlay')
+        this.setState({ playing: true })
+    }
+
 
 
     handleError = err => {

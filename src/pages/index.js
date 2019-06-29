@@ -179,11 +179,11 @@ class Test extends Component {
             controls={controls}                    
             onPlay={this.onPlay}             
             onPause={this.onPause}
-            onProgress={this.onProgress}
-            onError={this.handleAfterEnd}  
+            onProgress={this.onProgress}          
                 
           />    
           <div className="audioButton"> 
+           <button className="button" onClick={this.handleAfterEnd}>Back</button>
             <button className="button" onClick={this.handleAfterEnd}>Stop</button>
             <button className="button" onClick={this.handleRestart}>Re-start</button>
             </div>

@@ -73,15 +73,13 @@ class Test extends Component {
                 this.setState({
                     result: url,
                     showQrReader: false,
-                    showMP3Player: true
-                })
-
-                this.setState({
+                    showMP3Player: true,
+                    playing: true,
                     url,
                     played: 0,
                     loaded: 0,
                     pip: false
-                })
+                })       
 
 
 
@@ -105,18 +103,15 @@ class Test extends Component {
             console.log(url);
             if (audioList.indexOf(url) > -1) {
                 this.setState({
-                    result: url,
+                   result: url,
                     showQrReader: false,
-                    showMP3Player: true
-                })
-
-                this.setState({
+                    showMP3Player: true,
+                    playing: true,
                     url,
                     played: 0,
                     loaded: 0,
                     pip: false
                 })
-
             }
         }
     }

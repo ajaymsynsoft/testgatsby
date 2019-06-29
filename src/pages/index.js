@@ -3,6 +3,8 @@ import React, {
 } from "react"
 
 import Layout from "../components/layout"
+import ReactPlayer from 'react-player'
+import audioList from "../components/config"
 
 var QrReader ='';
 
@@ -10,6 +12,20 @@ class Test extends Component {
   state = {
     result: 'No result',
     QrReader: false,
+    showQrReader: true,
+   showMP3Player: false,
+   url: null,
+    pip: false,
+    playing: true,
+    controls: true,
+    light: false,
+    volume: 0.8,
+    muted: true,
+    played: 0,
+    loaded: 0,
+    duration: 0,
+    playbackRate: 1.0,
+    loop: false
   }
 
    componentDidMount() {
@@ -23,36 +39,127 @@ class Test extends Component {
     }
   }
 
-  handleScan = data => {
-	alert(JSON.stringify(data));
-    if (data) {
-      this.setState({
-        result: data
-      })
+
+ playPause = () => {
+  this.setState({ playing: !this.state.playing })
+   }
+  
+  handleAfterEnd = data => {
+    console.log("handleAfterEnd",data);
+    this.setState({
+    url: '',
+    result: '',
+    showQrReader:true,
+    showMP3Player:false
+    })
+  }
+  
+   handleRestart = data => {
+     this.setState({ seeking: false })
+     this.player.seekTo(parseFloat(0))
+     this.setState({ seeking: true })
+  }
+  
+
+  
+
+  handleScan = url => {
+  //  alert(JSON.stringify(data));
+  console.log(url);
+    if (url) {
+    url=url.toLowerCase();
+    console.log(url);
+   if(audioList.indexOf(url) > -1){
+    this.setState({
+    result: url,
+    showQrReader:false,
+    showMP3Player:true
+    })
+    
+     this.setState({
+      url,
+       played: 0,
+       loaded: 0,
+      pip: false
+    })
+    
+  
+    
+   }
     }
   }
   
-  handleLoad = data => {
-	alert(JSON.stringify(data));
-    if (data) {
-      this.setState({
-        result: data
-      })
+
+  
+  ref = player => {
+    this.player = player;
+  
+  }
+  
+  handleLoad = url => {
+    console.log(url);
+   // alert(JSON.stringify(data));
+    if (url) {
+    
+    url=url.toLowerCase();
+    console.log("url",audioList.indexOf(url));
+    console.log(url);
+      if(audioList.indexOf(url) > -1){
+    this.setState({
+    result: url,
+    showQrReader:false,
+    showMP3Player:true
+    })
+    
+    this.setState({
+      url,
+      played: 0,
+      loaded: 0,
+      pip: false
+    })
+    
+    
+    
+   }
     }
+  }
+  
+    onProgress = state => {
+    console.log('onProgress', state)
+    // We only want to update time slider if we are not currently seeking
+    if (!this.state.seeking) {
+      this.setState(state)
+    }
+  }
+  
+  onSeekMouseDown = e => {
+    this.setState({ seeking: true })
+  }
+  onSeekChange = e => {
+    this.setState({ played: parseFloat(e.target.value) })
+  }
+  onSeekMouseUp = e => {
+    this.setState({ seeking: false })
+    this.player.seekTo(parseFloat(e.target.value))
   }
   
 
   
   handleError = err => {
-	  alert(JSON.stringify(err));
+    alert(JSON.stringify(err));
     console.error(err)
   }
 
+  
+
+
+
 
   render() {
+    const { url, playing, controls, muted} = this.state
     return (
       <Layout>   
-        { this.state.QrReader &&    
+        { this.state.showQrReader && this.state.QrReader &&    
          <QrReader
           delay={300}
           onError={this.handleError}
@@ -60,6 +167,33 @@ class Test extends Component {
           onLoad={this.handleLoad}
           style={{ width: '100%' }}
           /> 		  		 
+        }
+
+        {this.state.showMP3Player && 
+          <>
+          <div className='player-wrapper'>
+          <ReactPlayer 
+            width='100%'
+            height='100%'
+            autoPlay
+            ref={this.ref}
+            url={url}     
+            onEnded={this.handleAfterEnd}           
+            playing={playing}       
+            muted={muted}       
+            controls={controls}                    
+            onPlay={this.onPlay}             
+            onPause={this.onPause}
+            onProgress={this.onProgress}
+                
+          />    
+          <div className="audioButton"> 
+            <button className="button" onClick={this.handleAfterEnd}>Stop</button>
+            <button className="button" onClick={this.handleRestart}>Re-start</button>
+            </div>
+          </div>
+           
+          </>
         }
         </Layout>
       )

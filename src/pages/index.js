@@ -20,7 +20,7 @@ class Test extends Component {
     controls: true,
     light: false,
     volume: 0.8,
-    muted: true,
+    muted: false,
     played: 0,
     loaded: 0,
     duration: 0,
@@ -159,13 +159,15 @@ class Test extends Component {
     return (
       <Layout>   
         { this.state.showQrReader && this.state.QrReader &&    
+          <div className='qrcode-wrapper'>
          <QrReader
           delay={300}
           onError={this.handleError}
           onScan={this.handleScan}
           onLoad={this.handleLoad}
           style={{ width: '100%' }}
-          /> 		  		 
+          /> 	
+          </div>	  		 
         }
 
         {this.state.showMP3Player && 

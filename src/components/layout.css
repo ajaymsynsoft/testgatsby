@@ -648,3 +648,15 @@ video{
     height: 100vh;
     min-height: 100vh;
 }
+
+.qrcode-wrapper section{
+   height: 100vh;
+   min-height: 100vh;
+}
+
+.qrcode-wrapper section div{
+  box-shadow:rgba(16, 16, 16,0) 0px 0px 0px 5px inset !important;
+  border:0px solid rgba(0, 0, 0, 0.3) !important;
+}
+
+

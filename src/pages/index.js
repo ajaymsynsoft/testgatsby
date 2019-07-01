@@ -184,9 +184,15 @@ class Test extends Component {
         return (
             <Layout>  
 		{ this.state.showWelcomeScreen  &&    
-          <div>
+           <div
+			  style={{
+				margin: `0 auto`,
+				maxWidth: 960,
+				padding: `1.45rem 1.0875rem`,
+			  }}
+			>
 			<h1>Welcome.....</h1>
-			<p>Please  <button className="button" onClick={this.handleAfterEnd}>click here</button> to continue scan QR code.</p>
+			<p>Please  <button className="button" onClick={this.handleAfterEnd}>click here</button> to scan QR code.</p>
           </div>         
         }			
         { !this.state.showWelcomeScreen && this.state.showQrReader && this.state.QrReader &&    

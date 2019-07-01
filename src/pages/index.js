@@ -153,8 +153,16 @@ class Test extends Component {
     }
 	
 	onError = err => {
-        console.error(JSON.stringify(err));
-        console.error(err)
+        alert("Please go online to listen audio.");
+        console.error(err);
+		this.setState({
+            url: '',
+            result: '',
+            showQrReader: true,
+            showMP3Player: false,
+			showWelcomeScreen: false,
+            playing: false
+        })
     }
 
 

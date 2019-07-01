@@ -14,10 +14,11 @@ class Test extends Component {
         QrReader: false,
         showQrReader: true,
         showMP3Player: false,
+        showWelcomeScreen: true,
         url: null,
         pip: false,
         playing: true,
-        controls: false,
+        controls: true,
         light: false,
         volume: 0.8,
         muted: false,
@@ -51,6 +52,7 @@ class Test extends Component {
             result: '',
             showQrReader: true,
             showMP3Player: false,
+			showWelcomeScreen: false,
             playing: false
         })
     }
@@ -60,9 +62,6 @@ class Test extends Component {
         this.player.seekTo(parseFloat(0))
         this.setState({ seeking: true })
     }
-
-
-
 
     handleScan = url => {
         console.log(url);
@@ -96,7 +95,7 @@ class Test extends Component {
 
     handleLoad = url => {
         console.log(url);
-		alert("Welcome Screen");
+		//alert("Welcome Screen");
         // alert(JSON.stringify(data));
         if (typeof url == 'string') {
             url = url.toLowerCase();
@@ -157,8 +156,14 @@ class Test extends Component {
     render() {
         const { url, playing, controls, muted } = this.state
         return (
-            <Layout>   
-        { this.state.showQrReader && this.state.QrReader &&    
+            <Layout>  
+		{ this.state.showWelcomeScreen  &&    
+          <div>
+		  Welcome GatsBy QR code Reader page.
+		  <p>Please  <button className="button" onClick={this.handleAfterEnd}>click here</button> to continue scan QR code.</p>
+          </div>         
+        }			
+        { !this.state.showWelcomeScreen && this.state.showQrReader && this.state.QrReader &&    
           <div className='qrcode-wrapper'>
          <QrReader
           delay={300}
@@ -170,13 +175,13 @@ class Test extends Component {
           </div>         
         }
 
-        {this.state.showMP3Player && 
+        { !this.state.showWelcomeScreen && this.state.showMP3Player && 
           <>
           <div className='player-wrapper'>
           <ReactPlayer 
             width='100%'
             height='100%'
-            autoplay
+            autoPlay
             ref={this.ref}
             url={url}     
             onEnded={this.handleAfterEnd}           

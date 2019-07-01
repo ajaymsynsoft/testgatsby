@@ -5,6 +5,7 @@ import React, {
 import Layout from "../components/layout"
 import ReactPlayer from 'react-player'
 import audioList from "../components/config"
+const queryString = require('query-string');
 
 var QrReader = '';
 
@@ -30,9 +31,14 @@ class Test extends Component {
     }
 
     componentDidMount() {
-        console.log("componentDidMount");
-        try {
+        console.log("componentDidMount",this.props.location.search);
+		var parsed = queryString.parse(this.props.location.search);		
+		console.log(parsed.pwa);		
+        try {			
             QrReader = require("react-qr-reader");
+			if(parsed && !!parsed.pwa){
+				this.setState({ showWelcomeScreen: false });
+			}
             this.setState({ QrReader: true });
             console.log("QrReader", QrReader);
         } catch (e) {
@@ -172,7 +178,7 @@ class Test extends Component {
             <Layout>  
 		{ this.state.showWelcomeScreen  &&    
           <div>
-		  Welcome GatsBy QR code Reader.
+			<h1>Welcome.....</h1>
 		  <p>Please  <button className="button" onClick={this.handleAfterEnd}>click here</button> to continue scan QR code.</p>
           </div>         
         }			

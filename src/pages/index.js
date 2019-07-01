@@ -151,6 +151,11 @@ class Test extends Component {
         console.error(JSON.stringify(err));
         console.error(err)
     }
+	
+	onError = err => {
+        console.error(JSON.stringify(err));
+        console.error(err)
+    }
 
 
     render() {
@@ -159,7 +164,7 @@ class Test extends Component {
             <Layout>  
 		{ this.state.showWelcomeScreen  &&    
           <div>
-		  Welcome GatsBy QR code Reader page.
+		  Welcome GatsBy QR code Reader.
 		  <p>Please  <button className="button" onClick={this.handleAfterEnd}>click here</button> to continue scan QR code.</p>
           </div>         
         }			
@@ -191,6 +196,7 @@ class Test extends Component {
             onPlay={this.onPlay}             
             onPause={this.onPause}
             onProgress={this.onProgress}          
+            onError={this.onError}          
                 
           />    
           <div className="audioButton"> 

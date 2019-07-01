@@ -19,7 +19,7 @@ class Test extends Component {
         url: null,
         pip: false,
         playing: true,
-        controls: true,
+        controls: false,
         light: false,
         volume: 0.8,
         muted: false,
@@ -179,7 +179,7 @@ class Test extends Component {
 		{ this.state.showWelcomeScreen  &&    
           <div>
 			<h1>Welcome.....</h1>
-		  <p>Please  <button className="button" onClick={this.handleAfterEnd}>click here</button> to continue scan QR code.</p>
+			<p>Please  <button className="button" onClick={this.handleAfterEnd}>click here</button> to continue scan QR code.</p>
           </div>         
         }			
         { !this.state.showWelcomeScreen && this.state.showQrReader && this.state.QrReader &&    

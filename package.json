@@ -16,6 +16,7 @@
     "prop-types": "^15.7.2",
     "query-string": "^6.8.1",
     "react": "^16.8.6",
+    "react-detect-offline": "^2.4.0",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-player": "^1.11.1",

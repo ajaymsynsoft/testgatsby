@@ -6,7 +6,6 @@ import Layout from "../components/layout"
 import ReactPlayer from 'react-player'
 import audioList from "../components/config"
 const queryString = require('query-string');
-
 var QrReader = '';
 
 class Test extends Component {
@@ -34,12 +33,15 @@ class Test extends Component {
         console.log("componentDidMount",this.props.location.search);
 		var parsed = queryString.parse(this.props.location.search);		
 		console.log(parsed.pwa);		
+		console.log("navigator.onLine",navigator.onLine);		
         try {	
-			audioList.map(r=>{
-				console.log(r);
-				const audio = new Audio();
-				audio.src = r;
-			});
+			if(navigator.onLine){
+				audioList.map(r=>{
+					console.log(r);
+					const audio = new Audio();
+					audio.src = r;
+				});
+			}
             QrReader = require("react-qr-reader");
 			if(parsed && !!parsed.pwa){
 				this.setState({ showWelcomeScreen: false });
@@ -227,7 +229,7 @@ class Test extends Component {
           </div>
            
           </>
-        }
+        }		
         </Layout>
         )
     }

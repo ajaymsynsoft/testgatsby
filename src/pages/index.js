@@ -153,7 +153,7 @@ class Test extends Component {
     }
 	
 	onError = err => {
-        alert("Please go online to listen audio.");
+        alert("You are offline. For this QR code please go online.");
         console.error(err);
 		this.setState({
             url: '',

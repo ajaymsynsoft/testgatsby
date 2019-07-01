@@ -33,7 +33,7 @@ module.exports = {
             options: {
                 name: `qrcode gatsby`,
                 short_name: `qrcode gatsby`,
-                start_url: `/`,
+                start_url: `/?pwa=1`,
                 background_color: `#f7f0eb`,
                 theme_color: `#a2466c`,
                 display: `standalone`,

@@ -17,7 +17,7 @@ class Test extends Component {
         url: null,
         pip: false,
         playing: true,
-        controls: true,
+        controls: false,
         light: false,
         volume: 0.8,
         muted: false,

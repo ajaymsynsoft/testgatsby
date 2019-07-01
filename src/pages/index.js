@@ -96,6 +96,7 @@ class Test extends Component {
 
     handleLoad = url => {
         console.log(url);
+		alert("Welcome Screen");
         // alert(JSON.stringify(data));
         if (typeof url == 'string') {
             url = url.toLowerCase();

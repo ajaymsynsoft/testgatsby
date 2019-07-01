@@ -34,7 +34,12 @@ class Test extends Component {
         console.log("componentDidMount",this.props.location.search);
 		var parsed = queryString.parse(this.props.location.search);		
 		console.log(parsed.pwa);		
-        try {			
+        try {	
+			audioList.map(r=>{
+				console.log(r);
+				const audio = new Audio();
+				audio.src = r;
+			});
             QrReader = require("react-qr-reader");
 			if(parsed && !!parsed.pwa){
 				this.setState({ showWelcomeScreen: false });

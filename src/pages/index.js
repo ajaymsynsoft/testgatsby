@@ -39,8 +39,9 @@ class Test extends Component {
 				audioList.map(r=>{
 					console.log(r);
 					const audio = new Audio();
-					audio.src = r;
-				});
+					audio.src = r;					
+				});	
+				
 			}
             QrReader = require("react-qr-reader");
 			if(parsed && !!parsed.pwa){

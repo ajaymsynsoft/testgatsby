@@ -15,14 +15,11 @@
     "gatsby-transformer-sharp": "^2.2.0",
     "prop-types": "^15.7.2",
     "query-string": "^6.8.1",
-    "react": "^16.8.6",
-    "react-detect-offline": "^2.4.0",
+    "react": "^16.8.6",    
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-player": "^1.11.1",
-    "react-qr-reader": "^2.2.1",
-    "react-qr-scanner": "0.0.8",
-    "selfsigned": "^1.10.4",
+    "react-qr-reader": "^2.2.1",       
     "window-or-global": "^1.0.1"
   },
   "devDependencies": {
